@@ -1,44 +1,72 @@
-import React from "react";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux"
+import {fetchWeatherByCity} from "../features/weather/weatherCardSlice"
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import TextField from '@material-ui/core/TextField';
+import {Typography, Grid, Box} from "@material-ui/core"
+// export default class CityForm extends React.Component {
+// constructor(props){
+//     super(props);
+//     this.onSubmit = this.onSubmit.bind(this);
+// }
+const CityForm = () => {
+        const {loading, isError} = useSelector((state) => state.weatherCards)
+        const dispatch = useDispatch();
+
+        const [cityName, setCityName] = useState('');
+
+        const onChange = (e) => {
+            setCityName(e.currentTarget.value);
+        };
+
+        const handleSubmit = () => { // const city = this.city.value;
+            console.log(cityName);
+            // this.props.addCity(city);
+            // this.city.value = "";
+            dispatch(fetchWeatherByCity(cityName));
+        }
 
 
+        return (<div>
 
-export default class CityForm extends React.Component {
+            <Grid container justify="center" direction="column" alignItems="center">
 
-    // constructor(props){
-    //     super(props);
-    //     this.onSubmit = this.onSubmit.bind(this);
-    //   }
+                <Grid container item  direction="horizontal" alignItems="center"  justify="center" style={{textAlign: "center", verticalAlign: "middle"}}>
+                <img src="logo192.png" width="100" height="100"/>
+                    <Typography variant="h1"
+                        component={"h1"}>
+                        Hello
+                    </Typography>
+                </Grid>
+                  
 
-    _handleKeyDown = (e) => {
-      if (e.key === 'Enter') {
-        this.handleSubmit();
-      }
-    }
 
-    handleSubmit = () => {
-        const city = this.city.value;
-        console.log(city);
-        this.props.addCity(city);
-        this.city.value = "";
-    }
+            {
+            !loading ? <>
+                <Grid item>
+                    <Typography variant="body1">
+                        Enter your city:
+                    </Typography>
+                </Grid>
+                <Grid item>
+                    <TextField error={isError}
+                        type="text"
+                        id="City-basic"
+                        label="City"
+                        onChange={onChange}/>
+                </Grid>
+                <Box mt={3}
+                    mb={4}>
+                    <Button variant="contained" color="primary" name="" id=""
+                        onClick={handleSubmit}>
+                        Add City
+                    </Button>
+                </Box>
+            </> : <CircularProgress/>
+        } </Grid>
+    </div>
+    );
+}
 
-    render() {
-      return (
-        <div>
-          <h1>Hello</h1>
-          <p>Enter your city:</p>
-          <input
-            type="text"  
-            ref={(c) => this.city = c} 
-            onKeyDown={this._handleKeyDown}
-          />
-          <button 
-            name="" 
-            id="" 
-            className="btn btn-primary"
-            onClick={this.handleSubmit}
-          >Add City</button>
-        </div>
-      );
-    }
-  }
+export default CityForm;

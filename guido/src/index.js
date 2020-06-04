@@ -6,6 +6,7 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 // import * as serviceWorker from './serviceWorker';
 import Layout from "./components/layout";
+require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
