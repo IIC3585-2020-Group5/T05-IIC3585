@@ -19,7 +19,7 @@ export const fetchForecastByCity = createAsyncThunk(
 )
 
 const forecastListParser = (list) => {
-    const myList = new Array();
+    const myList = [];
     const myFilter = createObjectFilter([ 'dt', 'main_temp', 'wind_speed' ]);
     let newObject;
     list.forEach(element => {
@@ -102,7 +102,12 @@ const weatherCardsSlice = createSlice ({
                 } catch (error) {
                     console.log(error);
                     state.forecastIsError = true;
+                    
                 }
+            } else {
+                let id = action.payload.city.id;
+                state.forecastIsError = false;
+                state.currentForecastId = id;
             }
         },
         [fetchWeatherByCity.pending]: (state, action) => {

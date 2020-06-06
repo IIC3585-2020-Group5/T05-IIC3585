@@ -12,14 +12,6 @@ import {
     CardActions,
     Button,
     Backdrop,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Box,
 } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
@@ -99,22 +91,11 @@ const CardList = () => {
       dispatch(removeCityWeather({ id }));
     }
 
-    const objectMap = (obj, fn) =>
-  Object.fromEntries(
-    Object.entries(obj).map(
-      ([k, v], i) => [k, fn(v, k, i)]
-    )
-  )
 
-  const addFunction = (a, b) => {
-    return a + b;
-  }
-  
-  const detailParamList = ["feels_like", "humidity", "pressure", "temp", "temp_max", "temp_min"];
 
     return (
         <div>
-          <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={"5"}>
+          <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={5}>
                 {
                 cards.map((cardInfo) => {
                     return (
@@ -142,13 +123,13 @@ const CardList = () => {
                                         <Button size="small" color="primary"  onClick={() => handleToggle(cardInfo.name)}>
                                             More Details
                                         </Button>
-                                        <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
-                                          <CardDetail cityId={cardInfo.id} />
-                                        </Backdrop>
                                     </CardActions>
                                 
 
                             </Card>
+                            <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+                            <CardDetail cityId={cardInfo.id} />
+                        </Backdrop>
                         </Grid>
                     )
                 })

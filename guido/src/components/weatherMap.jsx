@@ -1,6 +1,6 @@
 import React from "react"
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet';
 

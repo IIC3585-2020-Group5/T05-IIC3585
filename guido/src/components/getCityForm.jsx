@@ -32,8 +32,8 @@ const CityForm = () => {
 
             <Grid container justify="center" direction="column" alignItems="center">
 
-                <Grid container item  direction="horizontal" alignItems="center"  justify="center" style={{textAlign: "center", verticalAlign: "middle"}}>
-                <img src="logo192.png" width="100" height="100"/>
+                <Grid container item  direction="row" alignItems="center"  justify="center" style={{textAlign: "center", verticalAlign: "middle"}}>
+                <img src="logo192.png" width="100" height="100" alt="Logo"/>
                     <Typography variant="h1"
                         component={"h1"}>
                         Hello

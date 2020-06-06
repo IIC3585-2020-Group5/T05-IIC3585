@@ -1,7 +1,7 @@
 import CityForm from './getCityForm.jsx';
 import  CardList  from "./weatherCardList.jsx";
 import WeatherMap from "./weatherMap.jsx";
-import React, { Component } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import 'leaflet/dist/leaflet.css';
