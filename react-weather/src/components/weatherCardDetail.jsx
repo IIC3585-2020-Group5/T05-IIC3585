@@ -19,8 +19,6 @@ const CardDetail = (props) => {
     return (
         <Paper elevation={3}>
             {forecastLoading && !thisForecast && <CircularProgress />}
-            {/* {thisForecast? thisForecast.list[0].dt : null} */}
-            {/* {thisForecast? console.log(thisForecast) : null} */}
             {thisForecast? 
                 <LineChart width={900} height={500} data={thisForecast.list}
                     margin={{top: 35, right: 30, left: 20, bottom: 65}}>

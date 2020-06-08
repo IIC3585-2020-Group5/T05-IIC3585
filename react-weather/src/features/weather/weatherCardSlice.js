@@ -50,7 +50,6 @@ const weatherCardsSlice = createSlice ({
         currentForecastId: null,
     },
     reducers: {
-        
         addCityWeather: (state, action) => {
             state.cards.push(action);
             state.counter++;
@@ -101,8 +100,7 @@ const weatherCardsSlice = createSlice ({
                     state.currentForecastId = id;
                 } catch (error) {
                     console.log(error);
-                    state.forecastIsError = true;
-                    
+                    state.forecastIsError = true;                    
                 }
             } else {
                 let id = action.payload.city.id;
